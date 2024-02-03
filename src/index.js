@@ -1,6 +1,6 @@
 import { unified } from 'unified'
 import rehypeStringify from 'rehype-stringify'
-import rehypeExcerpt from './excerpt'
+import rehypeExcerpt from './excerpt.js'
 
 export default (opt) => {
     return (tree, { data }) => {
