@@ -6,8 +6,14 @@ export default (opt) => {
     return (tree, { data }) => {
         const clone = JSON.parse(JSON.stringify(tree))
         rehypeExcerpt(clone, opt)
-        data.astro.frontmatter.excerpt = unified()
+        const excerpt = data.astro.frontmatter.excerpt = {}
+        excerpt.html = unified()
             .use(rehypeStringify, { allowDangerousHtml: true })
             .stringify(clone)
+        excerpt.text = excerpt.html
+            .replace(/<(\S*?)[^>]*>.*?|<.*? \/>/g, ' ')
+            .replace(/\n/g, '')
+            .replace(/\s+/g, ' ')
+            .trim()
     }
 }

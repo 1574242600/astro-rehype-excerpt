@@ -39,7 +39,7 @@ interface options {
 import * as myPost from 'post.md'
 ---
 
-<div set:html={myPost.frontmatter.excerpt} />
+<div set:html={myPost.frontmatter.excerpt.html} />
 ```
 ### Collection
 ```astro
@@ -49,7 +49,7 @@ const blogPost = await getEntry('blog', 'post-1')
 const { remarkPluginFrontmatter } = await blogPost.render()
 ---
 
-<div set:html={remarkPluginFrontmatter.excerpt} />
+<div set:html={remarkPluginFrontmatter.excerpt.html} />
 ```
 ## example
 
@@ -61,12 +61,17 @@ Paragraph 2.
 Paragraph 3.
 Paragraph 4.
 ```
+
+### html
 ```html
 <h1>Title</h1>
 <p>Paragraph 1.</p>
 <p>Paragraph 2.</p>
 ```
-
+### text
+```
+Title Paragraph 1. Paragraph 2.
+```
 
 ## Thanks.
 [manovotny/remark-excerpt](https://github.com/manovotny/remark-excerpt)  
